@@ -71,11 +71,6 @@ func (d *dryRunWriter) GetWriter(root string) Writer {
 }
 
 func (w *writer) Write(name, path string, docBlob []byte, node *manifest.Node, IndexFileNames []string) error {
-	if len(docBlob) > 0 && node != nil {
-		if !strings.HasSuffix(name, ".md") {
-			name = fmt.Sprintf("%s.md", name)
-		}
-	}
 	root := filepath.Clean(w.root)
 	path = filepath.Clean(path)
 	filePath := fmt.Sprintf("%s/%s/%s", root, path, name)
